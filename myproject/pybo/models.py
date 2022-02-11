@@ -1,5 +1,13 @@
 from pybo import db
 
+question_voter = db.Table(
+    'question_voter',
+    db.Column('user_id', db.Integer, db.ForeignKey(
+        'user.id', ondelete='CASCADE'), primary_key=True),
+    db.Column('question_id', db.Integer, db.ForeignKey(
+        'question.id', ondelete='CASCADE'), primary_key=True)
+)
+
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
